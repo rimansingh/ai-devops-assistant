@@ -1,0 +1,22 @@
+# Environment
+.env
+*.env
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+
+# Fly.io
+fly.toml
