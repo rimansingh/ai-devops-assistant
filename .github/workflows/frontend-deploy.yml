@@ -1,0 +1,32 @@
+name: Deploy Frontend to HuggingFace
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "frontend/**"
+
+jobs:
+  sync-to-hf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Setup git
+        run: |
+          git config --global user.email "ci@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Push frontend folder to HuggingFace Space
+        run: |
+          cd frontend
+          git init
+          git remote add hf https://HF_USER:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/${{ secrets.HF_FRONTEND_SPACE_ID }}
+          git add .
+          git commit -m "sync from GitHub ${{ github.sha }}"
+          git push hf main --force
