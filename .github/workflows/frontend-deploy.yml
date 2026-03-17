@@ -32,4 +32,5 @@ jobs:
           git remote add hf https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE_ID}
           git add .
           git commit -m "sync from GitHub ${{ github.sha }}"
+          git branch -M main
           git push hf main --force
