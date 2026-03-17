@@ -23,10 +23,13 @@ jobs:
           git config --global user.name "GitHub Actions"
 
       - name: Push backend folder to HuggingFace Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_ID: ${{ secrets.HF_BACKEND_SPACE_ID }}
         run: |
           cd backend
           git init
-          git remote add hf https://HF_USER:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/${{ secrets.HF_BACKEND_SPACE_ID }}
+          git remote add hf https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE_ID}
           git add .
           git commit -m "sync from GitHub ${{ github.sha }}"
           git push hf main --force
