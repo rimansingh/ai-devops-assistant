@@ -58,6 +58,7 @@ app.add_middleware(
 
 # ── Routes ────────────────────────────────────────────────────────────────
 @app.get("/health", response_model=HealthResponse)
+@app.head("/health")
 async def health_check():
     """Health check endpoint — used by Fly.io and UptimeRobot."""
     return HealthResponse(
