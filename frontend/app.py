@@ -19,7 +19,8 @@ st.set_page_config(
 st.markdown("""
 <style>
   .main { background-color: #0e1117; }
-  section[data-testid="stSidebar"] > div { padding-top: 1rem; }
+  section[data-testid="stSidebar"] > div:first-child { padding-top: 0rem !important; }
+  section[data-testid="stSidebar"] div[data-testid="stSidebarContent"] { padding-top: 0rem !important; }
   .block-container { padding-top: 1rem; }
   .stTextArea textarea { font-family: 'Courier New', monospace; font-size: 13px; }
   .tool-badge {
