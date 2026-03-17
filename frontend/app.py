@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+BACKEND_URL = os.getenv("BACKEND_URL", "https://rimandeep-ai-devops-backend.hf.space")
 
 # ── Page config ──────────────────────────────────────────────────────────
 st.set_page_config(
