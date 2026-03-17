@@ -21,7 +21,7 @@ st.markdown("""
   .main { background-color: #0e1117; }
   section[data-testid="stSidebar"] > div:first-child { padding-top: 0rem !important; }
   section[data-testid="stSidebar"] div[data-testid="stSidebarContent"] { padding-top: 0rem !important; }
-  .block-container { padding-top: 1rem; }
+  .block-container { padding-top: 1rem; padding-left: 3rem; padding-right: 3rem; }
   .stTextArea textarea { font-family: 'Courier New', monospace; font-size: 13px; }
   .tool-badge {
     background-color: #1f6feb;
