@@ -4,7 +4,7 @@ An LLM-powered assistant for DevOps engineers. Paste error logs, Dockerfiles, Te
 
 Built with **FastAPI + LangChain + Groq (LLaMA 3.3)** on the backend and **Streamlit** on the frontend, with **Supabase** for conversation persistence. Hosted on **HuggingFace Spaces** with CI/CD via **GitHub Actions**.
 
-🚀 **Live app:** [huggingface.co/spaces/rimandeep/ai-devops-assistant](https://huggingface.co/spaces/rimandeep/ai-devops-assistant)
+🚀 **Live app:** [rimandeep-ai-devops-frontend.hf.space](https://rimandeep-ai-devops-frontend.hf.space)
 
 ---
 
