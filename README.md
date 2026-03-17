@@ -254,4 +254,4 @@ The backend emits structured JSON logs on every request:
 ## Author
 
 **Rimandeep Singh** — DevOps / Cloud / AI Engineer  
-[LinkedIn](https://linkedin.com/in/rimandeepsingh) · [GitHub](https://github.com/rimansingh) · [Portfolio](https://portfolio-website-3qw.pages.dev/)
+[LinkedIn](https://www.linkedin.com/in/rimandeep-singh/) · [GitHub](https://github.com/rimansingh) · [Portfolio](https://portfolio-website-3qw.pages.dev/)
