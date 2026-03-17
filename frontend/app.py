@@ -20,6 +20,7 @@ st.markdown("""
 <style>
   .main { background-color: #0e1117; }
   section[data-testid="stSidebar"] > div { padding-top: 1rem; }
+  .block-container { padding-top: 1rem; }
   .stTextArea textarea { font-family: 'Courier New', monospace; font-size: 13px; }
   .tool-badge {
     background-color: #1f6feb;
