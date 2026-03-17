@@ -19,6 +19,7 @@ st.set_page_config(
 st.markdown("""
 <style>
   .main { background-color: #0e1117; }
+  section[data-testid="stSidebar"] > div { padding-top: 1rem; }
   .stTextArea textarea { font-family: 'Courier New', monospace; font-size: 13px; }
   .tool-badge {
     background-color: #1f6feb;
@@ -102,7 +103,7 @@ with st.sidebar:
 
 # ── Main chat area ────────────────────────────────────────────────────────
 st.title("AI DevOps Assistant")
-st.caption("Powered by LLaMA 3.1 via Groq · Built with LangChain · Hosted on Fly.io + HuggingFace")
+st.caption("Powered by LLaMA 3.3 70B via Groq · Built with LangChain + FastAPI · Hosted on HuggingFace Spaces")
 
 # Display conversation history
 for msg in st.session_state.messages:

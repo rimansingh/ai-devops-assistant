@@ -2,7 +2,9 @@
 
 An LLM-powered assistant for DevOps engineers. Paste error logs, Dockerfiles, Terraform plans, or ask anything DevOps-related — the agent picks the right tool and gives you practical, actionable answers.
 
-Built with **FastAPI + LangChain + Groq (LLaMA 3.3)** on the backend and **Streamlit** on the frontend, with **Supabase** for conversation persistence.
+Built with **FastAPI + LangChain + Groq (LLaMA 3.3)** on the backend and **Streamlit** on the frontend, with **Supabase** for conversation persistence. Hosted on **HuggingFace Spaces** with CI/CD via **GitHub Actions**.
+
+🚀 **Live app:** [huggingface.co/spaces/rimandeep/ai-devops-assistant](https://huggingface.co/spaces/rimandeep/ai-devops-assistant)
 
 ---
 
@@ -16,6 +18,38 @@ Built with **FastAPI + LangChain + Groq (LLaMA 3.3)** on the backend and **Strea
 | Runbook generation | Describe an incident or outage |
 | Log analysis | Paste application or system logs |
 | General DevOps Q&A | Just ask |
+
+---
+
+## How it's built
+
+| Layer | Technology |
+|---|---|
+| LLM | LLaMA 3.3 70B via Groq |
+| Agent framework | LangChain |
+| Backend | FastAPI + Uvicorn |
+| Frontend | Streamlit |
+| Database | Supabase (PostgreSQL) |
+| Containerisation | Docker |
+| CI/CD | GitHub Actions |
+| Hosting | HuggingFace Spaces |
+
+---
+
+## How it's deployed
+
+The app runs as two HuggingFace Spaces:
+
+- **Backend** — Docker Space running FastAPI on port 7860
+- **Frontend** — Streamlit Space serving the chat UI
+
+Every push to the `main` branch on GitHub automatically syncs the relevant folder to its HuggingFace Space via GitHub Actions workflows. No manual deployment needed.
+
+```
+Push to main
+  ├── backend/** changed → GitHub Action → HF Docker Space (FastAPI)
+  └── frontend/** changed → GitHub Action → HF Streamlit Space (UI)
+```
 
 ---
 
@@ -35,53 +69,15 @@ ai-devops-assistant/
 │   └── requirements.txt
 ├── frontend/
 │   ├── app.py             # Streamlit UI
-│   ├── Dockerfile
 │   └── requirements.txt
 ├── .github/
 │   └── workflows/
-│       ├── backend-deploy.yml
-│       └── frontend-deploy.yml
+│       ├── backend-deploy.yml   # Syncs backend/ to HF on push
+│       └── frontend-deploy.yml  # Syncs frontend/ to HF on push
 ├── docker-compose.yml
 ├── .env.example
 └── .gitignore
 ```
-
----
-
-## Getting started
-
-### Prerequisites
-
-- Docker + Docker Compose
-- A [Groq API key](https://console.groq.com) (free)
-- A [Supabase](https://supabase.com) project (free tier works)
-
-### 1. Clone and configure
-
-```bash
-git clone https://github.com/your-username/ai-devops-assistant.git
-cd ai-devops-assistant
-cp .env.example .env
-```
-
-Edit `.env` with your keys:
-
-```env
-GROQ_API_KEY=your_groq_api_key_here
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_KEY=your_supabase_anon_key
-ENVIRONMENT=development
-```
-
-### 2. Run with Docker Compose
-
-```bash
-docker compose up --build
-```
-
-- Backend: http://localhost:8000
-- Frontend: http://localhost:8501
-- API docs: http://localhost:8000/docs
 
 ---
 
@@ -93,31 +89,9 @@ docker compose up --build
 | GET | `/metrics` | Usage metrics |
 | POST | `/chat` | Send a message to the agent |
 
-### Chat request example
-
-```bash
-Invoke-RestMethod -Method POST -Uri http://localhost:8000/chat \
-  -ContentType "application/json" \
-  -Body '{"message": "Review this Dockerfile", "history": []}'
-```
-
 ---
 
-## Tech stack
-
-| Layer | Technology |
-|---|---|
-| LLM | LLaMA 3.3 70B via Groq |
-| Agent framework | LangChain |
-| Backend | FastAPI + Uvicorn |
-| Frontend | Streamlit |
-| Database | Supabase (PostgreSQL) |
-| Containerisation | Docker + Docker Compose |
-| CI/CD | GitHub Actions |
-
----
-
-## Local development (without Docker)
+## Local development
 
 ```bash
 # Backend
@@ -130,6 +104,8 @@ cd frontend
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+Copy `.env.example` to `.env` and fill in your own API keys before running locally.
 
 > On Python 3.13+ install frontend deps with `pip install --only-binary=:all: -r requirements.txt`
 
