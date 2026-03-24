@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import os
 from dotenv import load_dotenv
+from streamlit_autorefresh import st_autorefresh
 
 load_dotenv()
 
@@ -14,6 +15,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ── Keep the HF Space awake: refresh every 10 minutes ────────────────────
+st_autorefresh(interval=10 * 60 * 1000, key="keep_alive_refresh")
 
 # ── Custom CSS ───────────────────────────────────────────────────────────
 st.markdown("""
